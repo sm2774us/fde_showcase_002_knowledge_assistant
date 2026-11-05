@@ -1,0 +1,12 @@
+[project]
+name = "fde-knowledge-assistant"
+version = "1.0.0"
+description = "Grounded, ACL-aware hybrid RAG assistant for customer knowledge bases. Citations, injection defense, evals."
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+knowledge-assistant = "knowledge_assistant.cli:main"
+
+[tool.setuptools]
+packages = ["knowledge_assistant"]
