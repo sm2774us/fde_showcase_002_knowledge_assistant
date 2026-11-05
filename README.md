@@ -22,6 +22,40 @@ question + role ─► input guardrail (injection patterns)
  answer + sources + audit log (hashed question, chunk ids, outcome)
 ```
 
+---
+
+## List of FDE Showcase Apps
+
+| App Name | 🎯 Core Focus & Architecture | 🧬 Lineage & Progression | 💡 Key Use Cases | 💼 How to Showcase in Interviews |
+| --- | --- | --- | --- | --- |
+| **[1. FDE Discovery Analyzer](https://github.com/sm2774us/fde_showcase_001_discovery_analyzer/)** | ⚡ **Basic / Single-Turn**<br><br>• Structured outputs via provider JSON Schema<br><br>• Few-shot prompt engineering & data-delimited inputs<br><br>• Deterministic verifiers & Pydantic auto-repair loops ($\le 2$ retries)<br><br>• Single-pass CLI / Web UI / Golden Evals | 🎯 **Level 1: Entry Foundation**<br><br>Establishes reliable, single-turn LLM input/output contracts, schema enforcement, repair loops, and deterministic verification before attempting stateful or multi-step logic. | • Customer discovery call transformation (notes $\rightarrow$ validated Agentforce-style blueprints)<br><br>• Automated static analysis & Apex code review for bulk-safety<br><br>• Rapid MVP 5-day execution planning | **Highlight Systems Reliability & Schema Integrity:**<br><br>• Explain how you eliminate LLM output variance using forced schemas and auto-healing Pydantic loops.<br><br>• Emphasize your zero-SDK stdlib adapter approach to avoid vendor lock-in across Claude, OpenAI, Gemini, and Grok. |
+| **[2. FDE Knowledge Assistant](https://github.com/sm2774us/fde_showcase_002_knowledge_assistant/)** | 🧠 **Intermediate / Grounded Context**<br><br>• Role-Based Access Control (RBAC/ACL) pre-filtering<br><br>• Hybrid search (BM25 + Dense Vectors combined via Reciprocal Rank Fusion)<br><br>• Heading/table-aware atomic chunking<br><br>• Input injection stripping & pre-prompt evidence gating<br><br>• Strict lexical citation verification | 📈 **Level 2: Contextual Escalation**<br><br>Evolves Level 1's single-turn validation into retrieval-augmented generation (RAG), focusing on enterprise data boundaries, security guardrails, context management, and hallucination prevention. | • Secure enterprise internal search & document Q&A<br><br>• Role-restricted knowledge access (e.g., HR vs. Employee compensation data)<br><br>• Injection-resistant document consumption<br><br>• Zero-hallucination support portals | **Highlight Enterprise Security & Groundedness:**<br><br>• Showcase the pre-retrieval ACL filtering that prevents restricted context from ever touching vector scoring or LLM prompts.<br><br>• Detail your anti-hallucination pipeline (evidence gate + lexical support check) that fails closed rather than guessing. |
+| **[3. FDE Case Resolution Agent](https://github.com/sm2774us/fde_showcase_003_case_resolution_agent/)** | 🤖 **Advanced / Agentic Execution**<br><br>• Multi-step ReAct loop with loop detection & error streak fail-safes<br><br>• Model Context Protocol (MCP stdio JSON-RPC) tool execution<br><br>• Agent-to-Agent (A2A JSON-RPC) policy communication<br><br>• Deterministic Human-In-The-Loop (HITL) gates & OTel-shaped telemetry traces | 🚀 **Level 3: Operational Agentics**<br><br>Combines Level 1 output contracts and Level 2 security/RAG context into autonomous, multi-turn tool execution against production systems (SQLite/Salesforce CRM) with strict financial guardrails. | • Autonomous enterprise CRM case resolution (refunds, order updates, email drafting)<br><br>• Multi-agent policy enforcement & financial tier escalations<br><br>• Cross-tool integration via native MCP across IDEs (Claude Code, Copilot, Gemini CLI, Codex) | **Highlight Autonomous Control & Architecture:**<br><br>• Focus on safety controls: dual-key approval policies, hard-coded parameter stripping (`approved_by`), and loop/error fail-safes.<br><br>• Demo your cross-agent interop using MCP and A2A standard protocols with full audit tracing. |
+
+---
+
+### 🛣️ Narrative Lineage Across the 3 Apps
+
+1. **[App 1 - Discovery Analyzer - (Validation Layer)](https://github.com/sm2774us/fde_showcase_001_discovery_analyzer/):** Proves you know how to talk to LLMs deterministically—getting structured data out without reliance on heavy frameworks, handling retries gracefully, and validating inputs/outputs against concrete business schemas.
+
+
+2. **[App 2 - Knowledge Assistant - (Context & Security Layer)](https://github.com/sm2774us/fde_showcase_002_knowledge_assistant/):** Expands single-turn output validation into multi-source enterprise retrieval, proving you can handle data isolation, prompt injection attacks, hybrid search ranking, and zero-hallucination citation checks.
+
+
+3. **[App 3 - Case Resolution Agent - (Action & Agentic Layer)](https://github.com/sm2774us/fde_showcase_003_case_resolution_agent/):** Translates validated structured outputs and secure context into autonomous system actions, orchestrating real tool calls via MCP, agent-to-agent negotiation, multi-turn error recovery, and strict human approval limits.
+
+---
+
+### 💡 Strategy: Demonstrating Technical Depth in Interviews
+
+* **The FDE Engineering Philosophy:** Walk interviewers through how this trio covers the complete deployment spectrum—from **Discovery** (parsing customer intake accurately) to **Knowledge** (safely accessing enterprise context) to **Resolution** (executing workflows via tools with guardrails).
+
+* **Offline-First Resilience:** Point out that all 3 apps run zero-dependency / offline test suites, mock layers, and golden evals without requiring API keys, proving your emphasis on testability and local CI/CD pipelines.
+
+* **Standards over Lock-in:** Highlight your architectural choices—writing lightweight, vendor-agnostic adapters (`urllib`), implementing standard specs (MCP, A2A, JSON-Schema), and avoiding black-box agent frameworks in favor of explicit Python loop control.
+
+---
+
 ## Quick start (offline, zero dependencies)
 ```bash
 python -m knowledge_assistant ingest
